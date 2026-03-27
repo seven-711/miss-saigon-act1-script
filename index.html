@@ -20,7 +20,7 @@
   </audio>
 
   <!-- Audio Controller Floating UI -->
-  <div id="audio-pill" class="audio-pill hidden">
+  <div id="audio-pill" class="audio-pill">
     <button id="audio-toggle" title="Toggle Music">
       <span class="music-icon">🎵</span>
       <span class="pill-text">Click to listen to the act.</span>
@@ -236,23 +236,30 @@
     const audio = document.getElementById('bg-music');
     const pill = document.getElementById('audio-pill');
     const btn = document.getElementById('audio-toggle');
+    const pillText = document.querySelector('.pill-text');
     let hasPlayed = false;
 
-    window.addEventListener('click', () => {
+    const startShow = () => {
       if (!hasPlayed) {
         audio.play().catch(e => console.log(e));
-        pill.classList.remove('hidden');
+        pillText.textContent = "Dreamland Orchestration";
         hasPlayed = true;
       }
-    }, { once: true });
+    };
+
+    window.addEventListener('click', startShow, { once: true });
 
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
+      startShow(); // Ensure it starts on the first button click if not already playing
+      
       if (audio.paused) {
         audio.play();
+        pillText.textContent = "Dreamland Orchestration";
         pill.classList.remove('paused');
       } else {
         audio.pause();
+        pillText.textContent = "Click to listen to the act.";
         pill.classList.add('paused');
       }
     });
