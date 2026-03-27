@@ -13,6 +13,20 @@
 </head>
 <body>
 
+  <!-- Background Audio (Autoplay-compliant setup) -->
+  <audio id="bg-music" loop preload="auto">
+    <source src="misssaigon.mp4" type="audio/mp4">
+    <!-- If misssaigon.mp3 is available later, the user can replace this source -->
+  </audio>
+
+  <!-- Audio Controller Floating UI -->
+  <div id="audio-pill" class="audio-pill hidden">
+    <button id="audio-toggle" title="Toggle Music">
+      <span class="music-icon">🎵</span>
+      <span class="pill-text">Dreamland Music</span>
+    </button>
+  </div>
+
   <div class="container">
     <div class="banner">
       <img src="dreamland_club_neon_1774584180993.png" alt="Dreamland Club Neon Sign" id="dreamland-banner-img">
@@ -34,27 +48,27 @@
       </div>
 
       <!-- Dialogue Block 1 -->
-      <article class="line" id="line-1-05">
+      <article class="line engineer" id="line-1-05">
         <span class="speaker"><span class="timestamp">(1:05)</span> Engineer:</span>
         <span class="dialogue">Hey guys</span>
       </article>
 
-      <article class="line" id="line-1-06">
+      <article class="line engineer" id="line-1-06">
         <span class="speaker"><span class="timestamp">(1:06)</span> Engineer:</span>
         <span class="dialogue">GI's check this one out!</span>
       </article>
 
-      <article class="line" id="line-1-11">
+      <article class="line engineer" id="line-1-11">
         <span class="speaker"><span class="timestamp">(1:11)</span> Engineer:</span>
         <span class="dialogue">Fresh out how much check out tonight my place dreamland yeah hey don't touch too much!</span>
       </article>
 
-      <article class="line" id="line-1-17">
+      <article class="line engineer" id="line-1-17">
         <span class="speaker"><span class="timestamp">(1:17)</span> Engineer:</span>
         <span class="dialogue">Yeah</span>
       </article>
 
-      <article class="line" id="line-1-18">
+      <article class="line engineer" id="line-1-18">
         <span class="speaker"><span class="timestamp">(1:18)</span> Engineer:</span>
         <span class="dialogue">Just come here and see her tonight… Yeah… yeah.</span>
       </article>
@@ -70,7 +84,7 @@
         <span class="dialogue">One of us will be Miss Saigon</span>
       </article>
 
-      <article class="line" id="line-engineer-1">
+      <article class="line engineer" id="line-engineer-1">
         <span class="speaker">ENGINEER</span>
         <span class="dialogue">I spread the word - it's Miss Saigon</span>
       </article>
@@ -80,7 +94,7 @@
         <span class="dialogue">Who's left to screw who hasn't gone</span>
       </article>
 
-      <article class="line" id="line-engineer-2">
+      <article class="line engineer" id="line-engineer-2">
         <span class="speaker">ENGINEER</span>
         <span class="dialogue">Shut up! and get your hot pants on</span>
       </article>
@@ -90,7 +104,7 @@
         <span class="dialogue">Each day more GI's disappear</span>
       </article>
 
-      <article class="line" id="line-engineer-3">
+      <article class="line engineer" id="line-engineer-3">
         <span class="speaker">ENGINEER</span>
         <span class="dialogue">There's still some left and they'll all be here</span>
       </article>
@@ -105,7 +119,7 @@
         (THE ENGINEER brings in a new girl, KIM)
       </div>
 
-      <article class="line" id="line-engineer-4">
+      <article class="line engineer" id="line-engineer-4">
         <span class="speaker">ENGINEER</span>
         <span class="dialogue">Surprise! I found this new girl, get her dressed from the country untouched</span>
       </article>
@@ -124,7 +138,7 @@
         (They laugh)
       </div>
 
-      <article class="line" id="line-engineer-5">
+      <article class="line engineer" id="line-engineer-5">
         <span class="speaker">ENGINEER</span>
         <span class="dialogue">Allez! allez! allez!<br>Why does it take all day?<br>Get your asses on stage... I'm raising cash tonight</span>
       </article>
@@ -134,7 +148,7 @@
         <span class="dialogue">Tonight I will be Miss Saigon</span>
       </article>
 
-      <article class="line" id="line-engineer-6">
+      <article class="line engineer" id="line-engineer-6">
         <span class="speaker">ENGINEER</span>
         <span class="dialogue">They say Saigon has weeks<br>I say it's time to pack</span>
       </article>
@@ -144,7 +158,7 @@
         <span class="dialogue">Tonight I will be Miss Saigon</span>
       </article>
 
-      <article class="line" id="line-engineer-7">
+      <article class="line engineer" id="line-engineer-7">
         <span class="speaker">ENGINEER </span>
         <span class="dialogue">Each day these little buns of theirs are worth less and less<br>I need a visa fast, and I'm not looking back</span>
       </article>
@@ -153,7 +167,7 @@
         (The ENGINEER looks through the door into the club.)
       </div>
 
-      <article class="line" id="line-engineer-8">
+      <article class="line engineer" id="line-engineer-8">
         <span class="speaker">ENGINEER</span>
         <span class="dialogue">Son of a bitch, they're here!<br>I can still engineer<br>It's like the old days, my little gamines</span>
       </article>
@@ -163,7 +177,7 @@
         <span class="dialogue">Oh sure!</span>
       </article>
 
-      <article class="line" id="line-engineer-9">
+      <article class="line engineer" id="line-engineer-9">
         <span class="speaker">ENGINEER</span>
         <span class="dialogue">You know who's out here? A gang of marines!</span>
       </article>
@@ -173,7 +187,7 @@
         <span class="dialogue">They're here?</span>
       </article>
 
-      <article class="line" id="line-engineer-10">
+      <article class="line engineer" id="line-engineer-10">
         <span class="speaker">ENGINEER</span>
         <span class="dialogue">We'll pick 'em clean that's what this contest's about</span>
       </article>
@@ -183,7 +197,7 @@
         <span class="dialogue">Yes, sir!</span>
       </article>
 
-      <article class="line" id="line-engineer-11">
+      <article class="line engineer" id="line-engineer-11">
         <span class="speaker">ENGINEER</span>
         <span class="dialogue">One of these boys might be your ticket out</span>
       </article>
@@ -192,7 +206,7 @@
         (turns to KIM)
       </div>
 
-      <article class="line" id="line-engineer-12">
+      <article class="line engineer" id="line-engineer-12">
         <span class="speaker">ENGINEER</span>
         <span class="dialogue">
           Why is she in that dress?<br>
@@ -218,5 +232,30 @@
     </footer>
   </div>
 
+  <script>
+    const audio = document.getElementById('bg-music');
+    const pill = document.getElementById('audio-pill');
+    const btn = document.getElementById('audio-toggle');
+    let hasPlayed = false;
+
+    window.addEventListener('click', () => {
+      if (!hasPlayed) {
+        audio.play().catch(e => console.log(e));
+        pill.classList.remove('hidden');
+        hasPlayed = true;
+      }
+    }, { once: true });
+
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (audio.paused) {
+        audio.play();
+        pill.classList.remove('paused');
+      } else {
+        audio.pause();
+        pill.classList.add('paused');
+      }
+    });
+  </script>
 </body>
 </html>

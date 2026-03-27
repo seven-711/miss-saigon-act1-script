@@ -126,6 +126,22 @@ h1 {
   font-size: 1.1rem;
 }
 
+/* Engineer Specific Emphasis */
+.line.engineer .speaker {
+  color: #ef4444; /* Vibrant Red */
+  text-shadow: 0 0 12px rgba(239, 68, 68, 0.5);
+}
+
+.line.engineer .dialogue {
+  color: #fafaf9;
+  font-weight: 500;
+}
+
+.line.engineer:hover {
+  background: rgba(239, 68, 68, 0.05);
+  border-right: 2px solid rgba(239, 68, 68, 0.3);
+}
+
 .timestamp {
   font-family: 'Courier New', Courier, monospace;
   font-size: 0.75rem;
@@ -184,6 +200,63 @@ h1 {
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #ca8a04;
+}
+
+/* Floating Audio Pill */
+.audio-pill {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 1000;
+  background: rgba(12, 10, 9, 0.8);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--accent-gold);
+  border-radius: 50px;
+  padding: 0.5rem 1.25rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+  animation: slideInUp 0.8s ease-out;
+}
+
+.audio-pill.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(20px);
+}
+
+.audio-pill button {
+  background: none;
+  border: none;
+  color: var(--accent-gold);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.music-icon {
+  font-size: 1.2rem;
+  animation: pulse 2s infinite ease-in-out;
+}
+
+.audio-pill.paused .music-icon {
+  animation: none;
+  opacity: 0.5;
+}
+
+@keyframes slideInUp {
+  from { transform: translateY(50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.1); opacity: 0.8; }
 }
 
 @media (max-width: 640px) {
