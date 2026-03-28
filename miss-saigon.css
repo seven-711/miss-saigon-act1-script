@@ -272,6 +272,7 @@ h1 {
   border-radius: 20px;
   padding: 1rem 1.5rem;
   width: 350px;
+  max-width: calc(100vw - 4rem);
 }
 
 .audio-controls-extra {
@@ -366,5 +367,23 @@ input[type="range"] {
     font-size: 0.8rem;
     letter-spacing: 0.1em;
     padding: 0.75rem;
+  }
+  
+  /* Mobile Audio Pill Adjustments */
+  .audio-pill {
+    right: 1rem;
+    bottom: 1rem;
+    padding: 0.4rem 1rem;
+  }
+  
+  .audio-pill.expanded {
+    width: calc(100vw - 2rem);
+    right: 1rem;
+    padding: 1rem;
+  }
+  
+  .audio-pill button {
+    gap: 0.5rem;
+    font-size: 0.75rem;
   }
 }
