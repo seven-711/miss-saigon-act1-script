@@ -181,6 +181,25 @@ h1 {
   padding: 1rem;
   border: 1px dashed var(--border-color);
   border-radius: 12px;
+  transition: all 0.5s ease;
+}
+
+.music-entry.active-line {
+  background: rgba(234, 179, 8, 0.15);
+  border: 1px solid var(--accent-gold);
+  box-shadow: 0 0 15px rgba(234, 179, 8, 0.2);
+  transform: scale(1.02);
+}
+
+.line.active-line {
+  background: rgba(234, 179, 8, 0.1);
+  border-left: 4px solid var(--accent-gold);
+  box-shadow: 0 0 15px rgba(234, 179, 8, 0.1);
+}
+
+.line.engineer.active-line {
+  background: rgba(239, 68, 68, 0.1);
+  border-left: 4px solid #ef4444;
 }
 
 .engineer-note {
@@ -247,6 +266,68 @@ h1 {
 .audio-pill.paused .music-icon {
   animation: none;
   opacity: 0.5;
+}
+
+.audio-pill.expanded {
+  border-radius: 20px;
+  padding: 1rem 1.5rem;
+  width: 350px;
+}
+
+.audio-controls-extra {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(234, 179, 8, 0.2);
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.audio-pill.expanded .audio-controls-extra {
+  opacity: 1;
+  max-height: 200px;
+}
+
+.seeker-container {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+input[type="range"] {
+  flex-grow: 1;
+  accent-color: var(--accent-gold);
+  height: 4px;
+  cursor: pointer;
+}
+
+.extra-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.speed-control {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color);
+  color: var(--accent-gold);
+  font-size: 0.75rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  outline: none;
+}
+
+.speed-control option {
+  background: var(--bg-color);
+  color: var(--text-main);
 }
 
 @keyframes slideInUp {

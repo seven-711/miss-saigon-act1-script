@@ -25,6 +25,24 @@
       <span class="music-icon">🎵</span>
       <span class="pill-text">Click to listen to the act.</span>
     </button>
+    <div class="audio-controls-extra">
+      <div class="seeker-container">
+        <span id="current-time">0:00</span>
+        <input type="range" id="audio-seeker" value="0" step="0.1">
+        <span id="duration-time">0:00</span>
+      </div>
+      <div class="extra-row">
+        <span class="engineer-note" style="font-size: 0.7rem;">ADJUST PLAYBACK DURATION</span>
+        <select id="speed-control" class="speed-control" title="Adjust Playback Speed">
+          <option value="0.5">0.5x Speed</option>
+          <option value="0.75">0.75x Speed</option>
+          <option value="1" selected>Normal Speed</option>
+          <option value="1.25">1.25x Speed</option>
+          <option value="1.5">1.5x Speed</option>
+          <option value="2">2.0x Speed</option>
+        </select>
+      </div>
+    </div>
   </div>
 
   <div class="container">
@@ -237,12 +255,75 @@
     const pill = document.getElementById('audio-pill');
     const btn = document.getElementById('audio-toggle');
     const pillText = document.querySelector('.pill-text');
+    const seeker = document.getElementById('audio-seeker');
+    const currentTimeDisplay = document.getElementById('current-time');
+    const durationDisplay = document.getElementById('duration-time');
+    const speedControl = document.getElementById('speed-control');
+    
     let hasPlayed = false;
+
+    // Parse timestamps for synchronization
+    const scrollSyncItems = [];
+    document.querySelectorAll('.timestamp').forEach(ts => {
+      const match = ts.textContent.match(/\((\d+):(\d+)\)/);
+      if (match) {
+        const seconds = parseInt(match[1]) * 60 + parseInt(match[2]);
+        const element = ts.closest('.line, .music-entry');
+        if (element) {
+          scrollSyncItems.push({ time: seconds, el: element });
+        }
+      }
+    });
+
+    const formatTime = (seconds) => {
+      const mins = Math.floor(seconds / 60);
+      const secs = Math.floor(seconds % 60);
+      return `${mins}:${secs.toString().padStart(2, '0')}`;
+    };
+
+    const updateUI = () => {
+      if (!audio.duration) return;
+      seeker.value = (audio.currentTime / audio.duration) * 100;
+      currentTimeDisplay.textContent = formatTime(audio.currentTime);
+      durationDisplay.textContent = formatTime(audio.duration);
+
+      // Sync script: highlight and scroll
+      let activeItem = null;
+      scrollSyncItems.forEach(item => {
+        if (audio.currentTime >= item.time) {
+          activeItem = item;
+        }
+      });
+
+      if (activeItem) {
+        const currentActive = document.querySelector('.active-line');
+        if (currentActive !== activeItem.el) {
+          if (currentActive) currentActive.classList.remove('active-line');
+          activeItem.el.classList.add('active-line');
+          activeItem.el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }
+    };
+
+    audio.addEventListener('timeupdate', updateUI);
+    audio.addEventListener('loadedmetadata', () => {
+      durationDisplay.textContent = formatTime(audio.duration);
+    });
+
+    seeker.addEventListener('input', () => {
+      const time = (seeker.value / 100) * audio.duration;
+      audio.currentTime = time;
+    });
+
+    speedControl.addEventListener('change', () => {
+      audio.playbackRate = parseFloat(speedControl.value);
+    });
 
     const startShow = () => {
       if (!hasPlayed) {
         audio.play().catch(e => console.log(e));
         pillText.textContent = "Dreamland Orchestration";
+        pill.classList.add('expanded');
         hasPlayed = true;
       }
     };
@@ -251,7 +332,7 @@
 
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
-      startShow(); // Ensure it starts on the first button click if not already playing
+      startShow();
       
       if (audio.paused) {
         audio.play();
@@ -259,7 +340,7 @@
         pill.classList.remove('paused');
       } else {
         audio.pause();
-        pillText.textContent = "Click to listen to the act.";
+        pillText.textContent = "Paused";
         pill.classList.add('paused');
       }
     });
