@@ -21,10 +21,28 @@
 
   <!-- Audio Controller Floating UI -->
   <div id="audio-pill" class="audio-pill">
-    <button id="audio-toggle" title="Toggle Music">
-      <span class="music-icon">🎵</span>
-      <span class="pill-text">Click to listen to the act.</span>
-    </button>
+    <div class="pill-main">
+      <button id="audio-toggle" title="Toggle Music">
+        <span class="music-icon" id="play-pause-icon">▶</span>
+      </button>
+      <div class="audio-info">
+        <span class="pill-text">Click to listen to the act.</span>
+        <div class="playback-stats">
+          <span class="time-display"><span id="current-time">0:00</span> / <span id="total-duration">0:00</span></span>
+          <select id="speed-select" title="Playback Speed">
+            <option value="0.5">0.5x</option>
+            <option value="0.75">0.75x</option>
+            <option value="1.0" selected>1.0x</option>
+            <option value="1.25">1.25x</option>
+            <option value="1.5">1.5x</option>
+            <option value="2.0">2.0x</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="progress-container" id="progress-container" title="Seek Audio">
+      <div class="progress-bar" id="progress-bar"></div>
+    </div>
   </div>
 
   <div class="container">
@@ -39,36 +57,36 @@
     <main class="script-section">
       
       <!-- Prelude -->
-      <div class="music-entry" id="music-0-24">
+      <div class="music-entry" id="music-0-24" data-time="24">
         <span class="timestamp">(0:24)</span> [ Music Selection: Prelude ]
       </div>
 
-      <div class="music-entry" id="music-0-54">
+      <div class="music-entry" id="music-0-54" data-time="54">
         <span class="timestamp">(0:54)</span> [ Music Orchestration ]
       </div>
 
       <!-- Dialogue Block 1 -->
-      <article class="line engineer" id="line-1-05">
+      <article class="line engineer" id="line-1-05" data-time="65">
         <span class="speaker"><span class="timestamp">(1:05)</span> Engineer:</span>
         <span class="dialogue">Hey guys</span>
       </article>
 
-      <article class="line engineer" id="line-1-06">
+      <article class="line engineer" id="line-1-06" data-time="66">
         <span class="speaker"><span class="timestamp">(1:06)</span> Engineer:</span>
         <span class="dialogue">GI's check this one out!</span>
       </article>
 
-      <article class="line engineer" id="line-1-11">
+      <article class="line engineer" id="line-1-11" data-time="71">
         <span class="speaker"><span class="timestamp">(1:11)</span> Engineer:</span>
         <span class="dialogue">Fresh out how much check out tonight my place dreamland yeah hey don't touch too much!</span>
       </article>
 
-      <article class="line engineer" id="line-1-17">
+      <article class="line engineer" id="line-1-17" data-time="77">
         <span class="speaker"><span class="timestamp">(1:17)</span> Engineer:</span>
         <span class="dialogue">Yeah</span>
       </article>
 
-      <article class="line engineer" id="line-1-18">
+      <article class="line engineer" id="line-1-18" data-time="78">
         <span class="speaker"><span class="timestamp">(1:18)</span> Engineer:</span>
         <span class="dialogue">Just come here and see her tonight… Yeah… yeah.</span>
       </article>
@@ -79,37 +97,37 @@
       </div>
 
       <!-- Scene Development -->
-      <article class="line" id="line-girls-1">
+      <article class="line" id="line-girls-1" data-time="90">
         <span class="speaker">GIRLS</span>
         <span class="dialogue">One of us will be Miss Saigon</span>
       </article>
 
-      <article class="line engineer" id="line-engineer-1">
+      <article class="line engineer" id="line-engineer-1" data-time="93">
         <span class="speaker">ENGINEER</span>
         <span class="dialogue">I spread the word - it's Miss Saigon</span>
       </article>
 
-      <article class="line" id="line-gigi-1">
+      <article class="line" id="line-gigi-1" data-time="95">
         <span class="speaker">GIGI</span>
         <span class="dialogue">Who's left to screw who hasn't gone</span>
       </article>
 
-      <article class="line engineer" id="line-engineer-2">
+      <article class="line engineer" id="line-engineer-2" data-time="98">
         <span class="speaker">ENGINEER</span>
         <span class="dialogue">Shut up! and get your hot pants on</span>
       </article>
 
-      <article class="line" id="line-gigi-2">
+      <article class="line" id="line-gigi-2" data-time="100">
         <span class="speaker">GIGI</span>
         <span class="dialogue">Each day more GI's disappear</span>
       </article>
 
-      <article class="line engineer" id="line-engineer-3">
+      <article class="line engineer" id="line-engineer-3" data-time="102">
         <span class="speaker">ENGINEER</span>
         <span class="dialogue">There's still some left and they'll all be here</span>
       </article>
 
-      <article class="line" id="line-allgirls-1">
+      <article class="line" id="line-allgirls-1" data-time="105">
         <span class="speaker">ALL GIRLS</span>
         <span class="dialogue">A girl can trust the Engineer</span>
       </article>
@@ -119,17 +137,17 @@
         (THE ENGINEER brings in a new girl, KIM)
       </div>
 
-      <article class="line engineer" id="line-engineer-4">
+      <article class="line engineer" id="line-engineer-4" data-time="108">
         <span class="speaker">ENGINEER</span>
         <span class="dialogue">Surprise! I found this new girl, get her dressed from the country untouched</span>
       </article>
 
-      <article class="line" id="line-gigi-3">
+      <article class="line" id="line-gigi-3" data-time="117">
         <span class="speaker">GIGI</span>
         <span class="dialogue">Just give that virgin act a rest</span>
       </article>
 
-      <article class="line" id="line-allgirls-2">
+      <article class="line" id="line-allgirls-2" data-time="121">
         <span class="speaker">ALL GIRLS</span>
         <span class="dialogue">(Mocking the new girl)<br>You are my first American</span>
       </article>
@@ -138,27 +156,27 @@
         (They laugh)
       </div>
 
-      <article class="line engineer" id="line-engineer-5">
+      <article class="line engineer" id="line-engineer-5" data-time="125">
         <span class="speaker">ENGINEER</span>
         <span class="dialogue">Allez! allez! allez!<br>Why does it take all day?<br>Get your asses on stage... I'm raising cash tonight</span>
       </article>
 
-      <article class="line" id="line-girls-2">
+      <article class="line" id="line-girls-2" data-time="132">
         <span class="speaker">GIRLS</span>
         <span class="dialogue">Tonight I will be Miss Saigon</span>
       </article>
 
-      <article class="line engineer" id="line-engineer-6">
+      <article class="line engineer" id="line-engineer-6" data-time="133">
         <span class="speaker">ENGINEER</span>
         <span class="dialogue">They say Saigon has weeks<br>I say it's time to pack</span>
       </article>
 
-      <article class="line" id="line-girls-3">
+      <article class="line" id="line-girls-3" data-time="137">
         <span class="speaker">GIRLS</span>
         <span class="dialogue">Tonight I will be Miss Saigon</span>
       </article>
 
-      <article class="line engineer" id="line-engineer-7">
+      <article class="line engineer" id="line-engineer-7" data-time="147">
         <span class="speaker">ENGINEER </span>
         <span class="dialogue">Each day these little buns of theirs are worth less and less<br>I need a visa fast, and I'm not looking back</span>
       </article>
@@ -167,37 +185,37 @@
         (The ENGINEER looks through the door into the club.)
       </div>
 
-      <article class="line engineer" id="line-engineer-8">
+      <article class="line engineer" id="line-engineer-8" data-time="153">
         <span class="speaker">ENGINEER</span>
         <span class="dialogue">Son of a bitch, they're here!<br>I can still engineer<br>It's like the old days, my little gamines</span>
       </article>
 
-      <article class="line" id="line-girls-4">
+      <article class="line" id="line-girls-4" data-time="155">
         <span class="speaker">GIRLS</span>
         <span class="dialogue">Oh sure!</span>
       </article>
 
-      <article class="line engineer" id="line-engineer-9">
+      <article class="line engineer" id="line-engineer-9" data-time="156">
         <span class="speaker">ENGINEER</span>
         <span class="dialogue">You know who's out here? A gang of marines!</span>
       </article>
 
-      <article class="line" id="line-girls-5">
+      <article class="line" id="line-girls-5" data-time="158">
         <span class="speaker">GIRLS</span>
         <span class="dialogue">They're here?</span>
       </article>
 
-      <article class="line engineer" id="line-engineer-10">
+      <article class="line engineer" id="line-engineer-10" data-time="160">
         <span class="speaker">ENGINEER</span>
         <span class="dialogue">We'll pick 'em clean that's what this contest's about</span>
       </article>
 
-      <article class="line" id="line-girls-6">
+      <article class="line" id="line-girls-6" data-time="161">
         <span class="speaker">GIRLS</span>
         <span class="dialogue">Yes, sir!</span>
       </article>
 
-      <article class="line engineer" id="line-engineer-11">
+      <article class="line engineer" id="line-engineer-11" data-time="162">
         <span class="speaker">ENGINEER</span>
         <span class="dialogue">One of these boys might be your ticket out</span>
       </article>
@@ -206,7 +224,7 @@
         (turns to KIM)
       </div>
 
-      <article class="line engineer" id="line-engineer-12">
+      <article class="line engineer" id="line-engineer-12" data-time="164">
         <span class="speaker">ENGINEER</span>
         <span class="dialogue">
           Why is she in that dress?<br>
@@ -236,8 +254,101 @@
     const audio = document.getElementById('bg-music');
     const pill = document.getElementById('audio-pill');
     const btn = document.getElementById('audio-toggle');
+    const playPauseIcon = document.getElementById('play-pause-icon');
     const pillText = document.querySelector('.pill-text');
+    
+    // New Control Elements
+    const currentTimeEl = document.getElementById('current-time');
+    const totalDurationEl = document.getElementById('total-duration');
+    const progressBar = document.getElementById('progress-bar');
+    const progressContainer = document.getElementById('progress-container');
+    const speedSelect = document.getElementById('speed-select');
+
     let hasPlayed = false;
+
+    // Time Formatter logic
+    const formatTime = (seconds) => {
+      if (isNaN(seconds)) return "0:00";
+      const m = Math.floor(seconds / 60);
+      const s = Math.floor(seconds % 60);
+      return `${m}:${s.toString().padStart(2, '0')}`;
+    };
+
+    // Make sure duration is populated when audio loads
+    audio.addEventListener('loadedmetadata', () => {
+      totalDurationEl.textContent = formatTime(audio.duration);
+    });
+
+    // Speed Dropdown Logic
+    speedSelect.addEventListener('change', (e) => {
+      audio.playbackRate = parseFloat(e.target.value);
+    });
+
+    // Expand/collapse on pill click
+    pill.addEventListener('click', (e) => {
+      if (e.target.closest('button') || e.target.closest('select') || e.target.closest('.progress-container')) return;
+      pill.classList.toggle('expanded');
+    });
+
+    // Seek Click Logic
+    progressContainer.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (!audio.duration) return;
+      const rect = progressContainer.getBoundingClientRect();
+      const pos = (e.clientX - rect.left) / rect.width;
+      audio.currentTime = pos * audio.duration;
+      if (!hasPlayed) startShow();
+    });
+
+    // Elements mapping for lyrics scroll
+    const timeElements = Array.from(document.querySelectorAll('[data-time]'))
+      .map(el => ({ element: el, time: parseFloat(el.getAttribute('data-time')) }))
+      .sort((a, b) => a.time - b.time); 
+
+    let activeIndex = -1;
+
+    audio.addEventListener('timeupdate', () => {
+      const currentTime = audio.currentTime;
+      
+      // Update UI Controls
+      currentTimeEl.textContent = formatTime(currentTime);
+      if (audio.duration) {
+         totalDurationEl.textContent = formatTime(audio.duration);
+         progressBar.style.width = `${(currentTime / audio.duration) * 100}%`;
+      }
+
+      // Auto-Scrolling Logic
+      let newActiveIndex = -1;
+      for (let i = 0; i < timeElements.length; i++) {
+        if (currentTime >= timeElements[i].time) {
+          newActiveIndex = i;
+        } else {
+          break; // Stop since it's sorted
+        }
+      }
+
+      if (newActiveIndex !== activeIndex) {
+        timeElements.forEach((item, index) => {
+          if (index < newActiveIndex) {
+            item.element.classList.remove('active-line');
+            item.element.classList.add('past-line'); 
+          } else if (index === newActiveIndex) {
+            item.element.classList.add('active-line');
+            item.element.classList.remove('past-line');
+          } else {
+            item.element.classList.remove('active-line');
+            item.element.classList.remove('past-line');
+          }
+        });
+
+        activeIndex = newActiveIndex;
+        
+        if (activeIndex >= 0) {
+          const activeItem = timeElements[activeIndex];
+          activeItem.element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }
+    });
 
     const startShow = () => {
       if (!hasPlayed) {
@@ -251,17 +362,30 @@
 
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
-      startShow(); // Ensure it starts on the first button click if not already playing
+      startShow(); 
       
       if (audio.paused) {
         audio.play();
         pillText.textContent = "Dreamland Orchestration";
+        playPauseIcon.textContent = "⏸";
         pill.classList.remove('paused');
       } else {
         audio.pause();
         pillText.textContent = "Click to listen to the act.";
+        playPauseIcon.textContent = "▶";
         pill.classList.add('paused');
       }
+    });
+
+    // Also update icon if audio ends or starts via other means
+    audio.addEventListener('play', () => {
+      playPauseIcon.textContent = "⏸";
+      pill.classList.remove('paused');
+    });
+
+    audio.addEventListener('pause', () => {
+      playPauseIcon.textContent = "▶";
+      pill.classList.add('paused');
     });
   </script>
 </body>
